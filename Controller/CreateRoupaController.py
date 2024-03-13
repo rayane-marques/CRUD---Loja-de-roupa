@@ -10,7 +10,7 @@ class CreateRoupaController:
         try:
             preco, tamanho, peca, descricao = valuesResponse["preco"], valuesResponse["tamanho"], valuesResponse["peca"], valuesResponse["descricao"]
             
-            sql = "insert into roupa (preco, tamanho, peca, descricao) values(%s,%s,%s,%s)"
+            sql = "INSERT into roupa (preco, tamanho, peca, descricao) VALUES(%s,%s,%s,%s)"
             values = (preco, tamanho, peca, descricao)
             
             cursor.execute(sql,values)

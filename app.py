@@ -1,5 +1,5 @@
 from flask import Flask, request
-from Controller import CreateRoupaController, ReadRoupaController, UpdateRoupaController
+from Controller import CreateRoupaController, ReadRoupaController, UpdateRoupaController, DeleteRoupaController
 
 app = Flask(__name__);
 
@@ -22,8 +22,17 @@ def listar_roupa():
 @app.route("/att-roupa", methods=['PUT'])
 def att_roupa():
     if request.method == 'PUT':
-        return UpdateRoupaController.UpdateRoupaController.execute()
-        
+        response = request.get_json()
+        result = UpdateRoupaController.UpdateRoupaController.execute(response)
+        return result
+
+# DELETE  
+@app.route("/del-roupa/<id>", methods=['DELETE'])
+def del_roupa(id):
+    if request.method == 'DELETE':
+        result = DeleteRoupaController.DeleteRoupaController.execute(id)
+        return result
+             
 
 if __name__ == "__main__":
     app.run(debug=True)
