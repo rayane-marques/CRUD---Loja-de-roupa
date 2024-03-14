@@ -1,5 +1,5 @@
 from flask import Flask, request
-from Controller import CreateRoupaController, ReadRoupaController, UpdateRoupaController, DeleteRoupaController
+from Controller import CreateRoupaController, ReadRoupaController, UpdateRoupaController, DeleteRoupaController, FindRoupaByIdController
 
 app = Flask(__name__);
 
@@ -32,7 +32,14 @@ def del_roupa(id):
     if request.method == 'DELETE':
         result = DeleteRoupaController.DeleteRoupaController.execute(id)
         return result
-             
+
+# Find Roupa
+
+@app.route("/find-roupa/<id>", methods=['GET'])
+def find_roupa(id):
+    if request.method == 'GET':
+        result = FindRoupaByIdController.FindRoupaByIdController.execute(id)
+        return result
 
 if __name__ == "__main__":
     app.run(debug=True)

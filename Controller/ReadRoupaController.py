@@ -1,13 +1,11 @@
 from flask import jsonify
-from model.db import connection, cursor
+from model.db import cursor
 import transformJSON
 
 class ReadRoupaController:
-    def execute():
-        
-        try:
-            
-            sql = "select id, preco, tamanho, peca, descricao from roupa"
+    def execute():      
+        try:      
+            sql = "SELECT * FROM roupa"
                       
             cursor.execute(sql)
         
